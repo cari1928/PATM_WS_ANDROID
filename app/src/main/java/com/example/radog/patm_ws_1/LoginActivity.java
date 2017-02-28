@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
+import android.widget.EditText;
 import android.widget.TextView;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -20,10 +21,13 @@ import butterknife.OnClick;
 
 public class LoginActivity extends AppCompatActivity implements Response.Listener<JSONObject>, Response.ErrorListener{
 
-    @BindView(R.id.etUser) TextView edtUsuario;
-    @BindView(R.id.etPass) TextView edtpassword;
+    @BindView(R.id.etUser) EditText edtUsuario;
+    @BindView(R.id.etPass) EditText edtpassword;
+    @BindView(R.id.tvMsg) TextView tvMsg;
     //@BindView(R.id.btnValidar) Button btnValidar;
     private RequestQueue qSolicitudes;
+    private String usuario;
+    private String pass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +45,6 @@ public class LoginActivity extends AppCompatActivity implements Response.Listene
 
     @OnClick(R.id.btnLogin)
     public void btnLogin() {
-        //edtUsuario.setText("Welcome");
         valUsuarioRequest();
     }
 
@@ -52,9 +55,13 @@ public class LoginActivity extends AppCompatActivity implements Response.Listene
 
     private void valUsuarioRequest()
     {
+        usuario = edtUsuario.getText().toString();
+        pass = edtpassword.getText().toString();
+
         //String URL = "http://192.168.100.6:8080/PATM17A/apirest/usuario/validar/rubensin/hola";
         //String URL = "http://10.152.194.248:8082/centro_comercial/apirest/usuario/validar/rubensin/hola";
-        String URL = "http://192.168.1.67:8082/centro_comercial/apirest/usuario/validar/rubensin/hola";
+        //String URL = "http://192.168.1.67:8082/centro_comercial/apirest/usuario/validar/rubensin/hola";
+        String URL = "http://192.168.1.67:8082/centro_comercial/apirest/usuario/validar/"+ usuario+"/" + pass;
 
         JsonObjectRequest solValCte = new JsonObjectRequest(Request.Method.GET,URL,this,this){
             @Override
@@ -76,13 +83,16 @@ public class LoginActivity extends AppCompatActivity implements Response.Listene
         try {
             String jsonResponse = "";
             String token = response.getString("token");
-            jsonResponse += "Token: " + token + "\n\n";
-            edtUsuario.setText(jsonResponse);
+
+            //para pruebas
+            //jsonResponse += "Token: " + token + "\n\n";
+            //edtUsuario.setText(jsonResponse);
 
             if(!token.equals("no_valido")) {
-                //Dashboard aparte
-                //Intent intDash = new Intent(this, DashBoard.class);
                 Intent intDash = new Intent(this, Dashboard.class);
+                intDash.putExtra("usuario", usuario);
+                intDash.putExtra("pass", pass);
+                intDash.putExtra("token", token);
                 startActivity(intDash);
             }
 

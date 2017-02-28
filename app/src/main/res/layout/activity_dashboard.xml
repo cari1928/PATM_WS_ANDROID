@@ -172,15 +172,6 @@
         android:layout_alignStart="@+id/etTelCasa"
         android:id="@+id/etTelCel" />
 
-    <RadioButton
-        android:text="Mujer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/rbHombre"
-        android:layout_toRightOf="@+id/rbHombre"
-        android:layout_toEndOf="@+id/rbHombre"
-        android:id="@+id/rbMujer" />
-
     <TextView
         android:text="Genero"
         android:layout_width="wrap_content"
@@ -191,33 +182,13 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-    <RadioButton
-        android:text="Hombre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/rbHombre"
-        android:layout_alignBaseline="@+id/tvGenero"
-        android:layout_alignBottom="@+id/tvGenero"
-        android:layout_alignLeft="@+id/etTelCel"
-        android:layout_alignStart="@+id/etTelCel" />
-
-    <TextView
-        android:text="Puesto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="19dp"
-        android:id="@+id/tvIdPuesto"
-        android:layout_below="@+id/rbHombre"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/spinner2"
         android:layout_alignBottom="@+id/tvIdPuesto"
-        android:layout_alignLeft="@+id/rbHombre"
-        android:layout_alignStart="@+id/rbHombre"
+        android:layout_alignLeft="@+id/etTelCel"
+        android:layout_alignStart="@+id/etTelCel"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
@@ -231,5 +202,48 @@
         android:id="@+id/btnInsEmp"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
+
+    <TextView
+        android:text="Puesto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvIdPuesto"
+        android:layout_above="@+id/btnInsEmp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="16dp" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etTelCel"
+        android:layout_alignLeft="@+id/etTelCel"
+        android:layout_alignStart="@+id/etTelCel"
+        android:id="@+id/rgGenero">
+
+    </RadioGroup>
+
+    <RadioButton
+        android:text="Mujer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rbMujer"
+        android:layout_weight="1"
+        android:layout_alignBaseline="@+id/tvGenero"
+        android:layout_alignBottom="@+id/tvGenero"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <RadioButton
+        android:text="Hombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rbHombre"
+        android:layout_weight="1"
+        android:layout_alignBaseline="@+id/rbMujer"
+        android:layout_alignBottom="@+id/rbMujer"
+        android:layout_toLeftOf="@+id/rbMujer"
+        android:layout_toStartOf="@+id/rbMujer" />
 
 </RelativeLayout>
