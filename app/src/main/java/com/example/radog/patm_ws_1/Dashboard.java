@@ -96,7 +96,11 @@ public class Dashboard extends AppCompatActivity implements Response.ErrorListen
 
         //String URL = "http://192.168.100.6:8080/PATM2016/apirest/wsclientes/insertarcte/";
         //String URL = "http://10.152.194.248:8082/centro_comercial/apirest/empleado/insertar/rubensin/hola/74b377b68bb9a6795b72342d764d2caf";
-        String URL = "http://192.168.1.67:8082/centro_comercial/apirest/empleado/insertar/" + usuario + "/" + pass + "/" + token;
+
+        //casa
+        //String URL = "http://192.168.1.67:8082/centro_comercial/apirest/empleado/insertar/" + usuario + "/" + pass + "/" + token;
+        //escuela
+        String URL = "http://172.20.108.81:8082/centro_comercial/apirest/empleado/insertar/" + usuario + "/" + pass + "/" + token;
 
         StringRequest solInsCte = new StringRequest(Request.Method.POST, URL, this, this) {
             @Override
@@ -113,6 +117,9 @@ public class Dashboard extends AppCompatActivity implements Response.ErrorListen
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 //HashMap<String, String> headers = new HashMap<String, String>();
+
+                //HEADERS =  encabezados para la petición
+
                 Map<String, String> headers = new HashMap<String, String>();
                 headers.put(
                         "Authorization",
@@ -145,6 +152,10 @@ public class Dashboard extends AppCompatActivity implements Response.ErrorListen
 
     @Override
     public void onResponse(String response) {
+
+        //transformar string a jsonobject
+        //JSONOBject obnjJSON = new JSONobject(response);
+
         try {
             etNombre.setText(response);
 

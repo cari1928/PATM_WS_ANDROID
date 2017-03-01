@@ -61,7 +61,11 @@ public class LoginActivity extends AppCompatActivity implements Response.Listene
         //String URL = "http://192.168.100.6:8080/PATM17A/apirest/usuario/validar/rubensin/hola";
         //String URL = "http://10.152.194.248:8082/centro_comercial/apirest/usuario/validar/rubensin/hola";
         //String URL = "http://192.168.1.67:8082/centro_comercial/apirest/usuario/validar/rubensin/hola";
-        String URL = "http://192.168.1.67:8082/centro_comercial/apirest/usuario/validar/"+ usuario+"/" + pass;
+
+        //casa
+        //String URL = "http://192.168.1.67:8082/centro_comercial/apirest/usuario/validar/"+ usuario+"/" + pass;
+        //escuela
+        String URL = "http://172.20.108.81:8082/centro_comercial/apirest/usuario/validar/"+ usuario+"/" + pass;
 
         JsonObjectRequest solValCte = new JsonObjectRequest(Request.Method.GET,URL,this,this){
             @Override
@@ -89,7 +93,12 @@ public class LoginActivity extends AppCompatActivity implements Response.Listene
             //edtUsuario.setText(jsonResponse);
 
             if(!token.equals("no_valido")) {
-                Intent intDash = new Intent(this, Dashboard.class);
+                //insertar-funciona
+                //Intent intDash = new Intent(this, Dashboard.class);
+
+                //actualizar-pruebas
+                Intent intDash = new Intent(this, UpdateActivity.class);
+
                 intDash.putExtra("usuario", usuario);
                 intDash.putExtra("pass", pass);
                 intDash.putExtra("token", token);
