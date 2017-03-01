@@ -58,14 +58,7 @@ public class LoginActivity extends AppCompatActivity implements Response.Listene
         usuario = edtUsuario.getText().toString();
         pass = edtpassword.getText().toString();
 
-        //String URL = "http://192.168.100.6:8080/PATM17A/apirest/usuario/validar/rubensin/hola";
-        //String URL = "http://10.152.194.248:8082/centro_comercial/apirest/usuario/validar/rubensin/hola";
-        //String URL = "http://192.168.1.67:8082/centro_comercial/apirest/usuario/validar/rubensin/hola";
-
-        //casa
-        //String URL = "http://192.168.1.67:8082/centro_comercial/apirest/usuario/validar/"+ usuario+"/" + pass;
-        //escuela
-        String URL = "http://172.20.108.81:8082/centro_comercial/apirest/usuario/validar/"+ usuario+"/" + pass;
+        String URL = "http://192.168.1.67:8082/centro_comercial/apirest/usuario/validar/"+ usuario+"/" + pass;
 
         JsonObjectRequest solValCte = new JsonObjectRequest(Request.Method.GET,URL,this,this){
             @Override

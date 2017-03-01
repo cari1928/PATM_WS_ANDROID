@@ -57,6 +57,11 @@ public class UpdateActivity extends AppCompatActivity implements Response.Listen
         actEmpleadoRequest();
     }
 
+    @OnClick(R.id.btnDelete)
+    public void btnDelete() {
+        delEmpleadoRequest();
+    }
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -66,14 +71,7 @@ public class UpdateActivity extends AppCompatActivity implements Response.Listen
 
     private void getEmpleado()
     {
-        //String URL = "http://192.168.100.6:8080/PATM17A/apirest/usuario/validar/rubensin/hola";
-        //String URL = "http://10.152.194.248:8082/centro_comercial/apirest/usuario/validar/rubensin/hola";
-        //String URL = "http://192.168.1.67:8082/centro_comercial/apirest/usuario/validar/rubensin/hola";
-
-        //casa
-        //String URL = "http://192.168.1.67:8082/centro_comercial/apirest/usuario/validar/"+ usuario+"/" + pass;
-        //escuela
-        String URL = "http://172.20.108.81:8082/centro_comercial/apirest/empleado/ver/25/"+ usuario+"/" + pass + "/" +token;
+        String URL = "http://192.168.1.67:8082/centro_comercial/apirest/empleado/ver/25/"+ usuario+"/" + pass + "/" +token;
 
         StringRequest solGETCte = new StringRequest(Request.Method.GET, URL, this, this) {
             @Override
@@ -109,13 +107,7 @@ public class UpdateActivity extends AppCompatActivity implements Response.Listen
             etNombre.setText("ERROR jsonObject PUT: " +e.toString());
         }
 
-        //String URL = "http://192.168.100.6:8080/PATM2016/apirest/wsclientes/insertarcte/";
-        //String URL = "http://10.152.194.248:8082/centro_comercial/apirest/empleado/insertar/rubensin/hola/74b377b68bb9a6795b72342d764d2caf";
-
-        //casa
-        //String URL = "http://192.168.1.67:8082/centro_comercial/apirest/empleado/insertar/" + usuario + "/" + pass + "/" + token;
-        //escuela
-        String URL = "http://172.20.108.81:8082/centro_comercial/apirest/empleado/actualizar/" + usuario + "/" + pass + "/" + token;
+        String URL = "http://192.168.1.67:8082/centro_comercial/apirest/empleado/actualizar/" + usuario + "/" + pass + "/" + token;
 
         StringRequest solActCte = new StringRequest(Request.Method.PUT, URL, this, this) {
             @Override
@@ -146,7 +138,25 @@ public class UpdateActivity extends AppCompatActivity implements Response.Listen
             }
         };
         qSolicitudes.add(solActCte);
+    }
 
+    private void delEmpleadoRequest()
+    {
+        String URL = "http://192.168.1.67:8082/centro_comercial/apirest/empleado/borrar/23/"+ usuario+"/" + pass + "/" +token;
+
+        StringRequest solGETCte = new StringRequest(Request.Method.DELETE, URL, this, this) {
+            @Override
+            public Map<String, String> getHeaders() {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put(
+                        "Authorization",
+                        String.format("Basic %s", Base64.encodeToString(
+                                String.format("%s:%s", "root", "root").getBytes(), Base64.DEFAULT)));
+                return params;
+            }
+
+        };
+        qSolicitudes.add(solGETCte);
     }
 
     @Override
@@ -161,15 +171,21 @@ public class UpdateActivity extends AppCompatActivity implements Response.Listen
             JSONObject objResponse = new JSONObject(response);
             String status = objResponse.getString("status");
 
-            if(status.equals("GET")) {
-                String nombre = objResponse.getString("nombre");
-                String correo = objResponse.getString("correo");
+            switch(status) {
+                case "GET":
+                    String nombre = objResponse.getString("nombre");
+                    String correo = objResponse.getString("correo");
 
-                etNombre.setText(nombre);
-                etCorreo.setText(correo);
+                    etNombre.setText(nombre);
+                    etCorreo.setText(correo);
+                    break;
+                case "PUT":
+                    Toast.makeText(UpdateActivity.this, "Actualizado", Toast.LENGTH_LONG).show();
+                    break;
 
-            } else if(status.equals("PUT")) {
-                Toast.makeText(UpdateActivity.this, "Actualizado", Toast.LENGTH_LONG).show();
+                case "DELETE":
+                    Toast.makeText(UpdateActivity.this, "Eliminado", Toast.LENGTH_LONG).show();
+                    break;
             }
 
             //para pruebas
