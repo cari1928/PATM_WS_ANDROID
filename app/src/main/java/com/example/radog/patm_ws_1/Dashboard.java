@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -56,6 +58,31 @@ public class Dashboard extends AppCompatActivity implements Response.ErrorListen
         usuario = getIntent().getStringExtra("usuario");
         pass = getIntent().getStringExtra("pass");
         token = getIntent().getStringExtra("token");
+    }
+
+    //para desplegar el menú
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_dashboard, menu); //asociando el menú
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    //atrapar los eventos del menú
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.itemListaEmpleados:
+                Intent intLista = new Intent(this, ListarEmpleados.class);
+                startActivity(intLista);
+                break;
+
+            case R.id.itemAcercaDe:
+                Intent intAcerca = new Intent(this, AcercaDe.class);
+                startActivity(intAcerca);
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     private void insClienteRequest() {

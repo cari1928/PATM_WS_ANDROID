@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/itemListaEmpleados"
+        android:title="@string/strMenu1"
+        app:showAsAction="always"
+        android:icon="@mipmap/ic_list_black_24dp"
+        ></item>
+
+    <item
+        android:id="@+id/itemAcercaDe"
+        android:title="@string/strMenu2"
+        app:showAsAction="always"
+        android:icon="@mipmap/ic_info_outline_black_24dp"
+        ></item>
+
+</menu>

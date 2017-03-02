@@ -1,3 +1,15 @@
 <resources>
-    <string name="app_name">PATM_WS_1</string>
+    <string name="app_name">Web Services</string>
+    <string name="title_activity_list_emp">ListEmpActivity</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="strMenu1">Listar</string>
+    <string name="strMenu2">Acerca</string>
+
+    <string name="strNombreDev">Santana De Los Ríos Carolina</string>
+    <string name="strCorreoDev">13030622@itcelaya.edu.mx</string>
+    <string name="strTelDev">(044) 461-171-4676</string>
 </resources>

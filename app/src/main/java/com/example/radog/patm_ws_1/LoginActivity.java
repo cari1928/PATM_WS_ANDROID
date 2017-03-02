@@ -23,8 +23,7 @@ public class LoginActivity extends AppCompatActivity implements Response.Listene
 
     @BindView(R.id.etUser) EditText edtUsuario;
     @BindView(R.id.etPass) EditText edtpassword;
-    @BindView(R.id.tvMsg) TextView tvMsg;
-    //@BindView(R.id.btnValidar) Button btnValidar;
+
     private RequestQueue qSolicitudes;
     private String usuario;
     private String pass;
