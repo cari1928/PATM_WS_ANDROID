@@ -13,4 +13,11 @@
     <string name="strCorreoDev">13030622@itcelaya.edu.mx</string>
     <string name="strTelDev">(044) 461-171-4676</string>
     <string name="title_activity_ver_datos">VerDatos</string>
+
+    <string name="strmenu3">Producto</string>
+
+    <string name="strNomHint">Nombre del Producto</string>
+    <string name="strCantHint">Cantidad de Producto</string>
+
+    <string name="strBtnSave">Guardar</string>
 </resources>

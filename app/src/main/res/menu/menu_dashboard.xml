@@ -16,4 +16,10 @@
         android:icon="@mipmap/ic_info_outline_black_24dp"
         ></item>
 
+    <item
+        android:id="@+id/itmProducto"
+        android:title="@string/strmenu3"
+        app:showAsAction="always"
+    ></item>
+
 </menu>

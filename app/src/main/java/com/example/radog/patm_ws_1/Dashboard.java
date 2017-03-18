@@ -32,15 +32,24 @@ import butterknife.OnClick;
 
 public class Dashboard extends AppCompatActivity implements Response.ErrorListener, Response.Listener<String> {
 
-    @BindView(R.id.etNombre) TextView etNombre;
-    @BindView(R.id.etApellidoP) TextView etApellidoP;
-    @BindView(R.id.etApellidoM) TextView etApellidoM;
-    @BindView(R.id.etRFC) TextView etRFC;
-    @BindView(R.id.etDireccion) TextView etDireccion;
-    @BindView(R.id.etCorreo) TextView etCorreo;
-    @BindView(R.id.etTelCasa) TextView etTelCasa;
-    @BindView(R.id.etTelCel) TextView etTelCel;
-    @BindView(R.id.rgGenero) RadioGroup rgGenero;
+    @BindView(R.id.etNombre)
+    TextView etNombre;
+    @BindView(R.id.etApellidoP)
+    TextView etApellidoP;
+    @BindView(R.id.etApellidoM)
+    TextView etApellidoM;
+    @BindView(R.id.etRFC)
+    TextView etRFC;
+    @BindView(R.id.etDireccion)
+    TextView etDireccion;
+    @BindView(R.id.etCorreo)
+    TextView etCorreo;
+    @BindView(R.id.etTelCasa)
+    TextView etTelCasa;
+    @BindView(R.id.etTelCel)
+    TextView etTelCel;
+    @BindView(R.id.rgGenero)
+    RadioGroup rgGenero;
 
     private String usuario;
     private String pass;
@@ -80,6 +89,12 @@ public class Dashboard extends AppCompatActivity implements Response.ErrorListen
                 Intent intAcerca = new Intent(this, AcercaDe.class);
                 startActivity(intAcerca);
                 break;
+
+            case R.id.itmProducto:
+                Intent intProd = new Intent(this, Producto.class);
+                startActivity(intProd);
+                break;
+
         }
 
         return super.onOptionsItemSelected(item);
@@ -99,9 +114,9 @@ public class Dashboard extends AppCompatActivity implements Response.ErrorListen
             // jsonObject.put("id_puesto", 1);
 
             String genero = "";
-            if(rgGenero.getCheckedRadioButtonId() == R.id.rbHombre) {
+            if (rgGenero.getCheckedRadioButtonId() == R.id.rbHombre) {
                 genero = "m";
-            } else if(rgGenero.getCheckedRadioButtonId() == R.id.rbMujer) {
+            } else if (rgGenero.getCheckedRadioButtonId() == R.id.rbMujer) {
                 genero = "f";
             }
 
