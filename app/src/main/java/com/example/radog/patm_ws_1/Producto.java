@@ -34,16 +34,22 @@ public class Producto extends AppCompatActivity {
 
     @OnClick(R.id.btnSave)
     public void btnSave() {
-        String nomProd = edtNomProd.getText().toString();
-        int cantProd = Integer.parseInt(edtCantProd.getText().toString());
+        try {
+            String nomProd = edtNomProd.getText().toString();
+            int cantProd = Integer.parseInt(edtCantProd.getText().toString());
 
-        String insProd = "INSERT INTO producto(nomProd, cantProd, idCant) " +
-                "VALUES('" + nomProd + "'," + cantProd + ", 100000000)";
+            String insProd = "INSERT INTO producto(nomProd, cantProd, idCant) " +
+                    "VALUES('" + nomProd + "'," + cantProd + ", 100000000)";
 
-        //objSQL.execSQL("PRAGMA FOREIGN_KEYS=ON");
-        objSQL.execSQL(insProd);
-        //objSQL.execSQL("PRAGMA FOREIGN_KEYS=OFF");
-        Toast.makeText(this, "Se insertó el producto", Toast.LENGTH_LONG).show();
+            //objSQL.execSQL("PRAGMA FOREIGN_KEYS=ON");
+            objSQL.execSQL(insProd);
+            //objSQL.execSQL("PRAGMA FOREIGN_KEYS=OFF");
+            Toast.makeText(this, "Se insertó el producto", Toast.LENGTH_LONG).show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
     }
 
 }

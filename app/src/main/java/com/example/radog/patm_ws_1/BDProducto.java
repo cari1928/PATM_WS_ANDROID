@@ -4,18 +4,14 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
 /**
  * Created by radog on 16/03/2017.
  */
 
 public class BDProducto extends SQLiteOpenHelper {
 
-    String bd1 = "CREATE TABLE categoria(idCant INTEGER PRIMARY KEY, nomCant varchar(50) )";
-    String bd2 = "CREATE TABLE producto( idProd INTEGER PRIMARY KEY, nomProd varchar(50), cantProd INTEGER,  idCant INTEGER, " +
+    String bd1 = "CREATE TABLE categoria(idCant INTEGER PRIMARY KEY, nomCant TEXT )";
+    String bd2 = "CREATE TABLE producto( idProd INTEGER PRIMARY KEY, nomProd TEXT, cantProd INTEGER,  idCant INTEGER, " +
             "CONSTRAINT fk_cant FOREIGN KEY(idCant) REFERENCES categoria(idCant) )";
 
     //name = nombre base de datos
